@@ -1,0 +1,5 @@
+Outras formas de encontrar o input Número do Pedido: 
+await page.locator('//label[text()="Número do Pedido"]/..//input').fill('VLO-XAPMM6')
+await page.getByLabel('Número do Pedido').fill('VLO-XAPMM6')
+await page.getByPlaceholder('Ex: VLO-ABC123').fill('VLO-XAPMM6')
+await page.getByTestId('search-order-id').fill('VLO-XAPMM6')

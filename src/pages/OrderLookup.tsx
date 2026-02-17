@@ -86,7 +86,7 @@ const OrderLookup = () => {
                 <Label htmlFor="order-id">Número do Pedido</Label>
                 <Input
                   id="order-id"
-                  data-testid="search-order-id"
+                  // data-testid="search-order-id"
                   type="text"
                   placeholder="Ex: VLO-ABC123"
                   value={orderId}
