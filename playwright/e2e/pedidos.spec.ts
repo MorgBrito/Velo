@@ -14,8 +14,6 @@ test('deve consultar um pedido aprovado', async ({ page }) => {
   await page.getByRole('button', { name: 'Buscar Pedido' }).click();
 
   //Assert
-  await expect(page.getByTestId('order-result-id')).toBeVisible({timeout:7000})
-  await expect(page.getByTestId('order-result-id')).toContainText('VLO-XAPMM6')
-  await expect(page.getByTestId('order-result-status')).toBeVisible()
-  await expect(page.getByTestId('order-result-status')).toContainText('APROVADO')
+  await expect(page.getByRole('paragraph').filter({hasText: 'VLO-XAPMM6'})).toBeVisible()
+  await expect(page.getByText('APROVADO')).toBeVisible()
 })
