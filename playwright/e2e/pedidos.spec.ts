@@ -14,6 +14,15 @@ test('deve consultar um pedido aprovado', async ({ page }) => {
   await page.getByRole('button', { name: 'Buscar Pedido' }).click();
 
   //Assert
-  await expect(page.getByRole('paragraph').filter({hasText: 'VLO-XAPMM6'})).toBeVisible()
+  // opção 1
+  // const orderCode = page.locator('//p[text()="Pedido"]/..//p[text()="VLO-XAPMM6"]')
+  // await expect(orderCode).toBeVisible()
+
+  // opção 2
+  const containerPedido = page.getByRole('paragraph')
+                              .filter({hasText: /^Pedido$/})
+                              .locator('..') // sobe para o elemento pai
+
+  await expect(containerPedido).toContainText('VLO-XAPMM6', {timeout: 10000})
   await expect(page.getByText('APROVADO')).toBeVisible()
 })
