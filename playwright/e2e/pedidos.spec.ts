@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test'
+import {generateOrderCode} from '../support/helpers'
 
 ///AAA - Arrange, Act, Assert
-
 test('deve consultar um pedido aprovado', async ({ page }) => {
+
   //Test Data
   const order = 'VLO-XAPMM6'
 
@@ -26,8 +27,9 @@ test('deve consultar um pedido aprovado', async ({ page }) => {
 })
 
 test('Deve exibir mensagem quando o pedido não é encontrado', async ({page})=> {
-
-  const order = 'VLO-ABC123'
+  
+  //Test Data
+  const order = generateOrderCode()
 
   //Arrange
   await page.goto('http://localhost:5173/')
@@ -40,15 +42,6 @@ test('Deve exibir mensagem quando o pedido não é encontrado', async ({page})=>
   await page.getByRole('button', { name: 'Buscar Pedido' }).click()
 
   //Assert
-  //const title = page.getByRole('heading', {name: 'Pedido não encontrado', level:3})
-  // await expect(title).toBeVisible()
-  //opção 1 - Xpath
-  // const mensagem = page.locator('//p[text()="Verifique o número do pedido e tente novamente"]')
-  //opção 2 - p + hasText
-  // const mensagem = page.locator('p', {hasText: 'Verifique o número do pedido e tente novamente'})
-  // await expect(mensagem).toBeVisible()
-
-  //opção 3 - toMatchAriaSnapshot
   await expect(page.locator('#root')).toMatchAriaSnapshot(`
     - img
     - heading "Pedido não encontrado" [level=3]
