@@ -45,7 +45,7 @@ export default defineConfig({
     //tempo máximo para navegações como goto(), waitForURL()
     //Quando o valor é 0, herda o limite do timeout global
     navigationTimeout:10000, 
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
