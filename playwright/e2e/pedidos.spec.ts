@@ -21,6 +21,7 @@ test.describe('Consulta de pedido', () => {
 
     const order ={
       number: 'VLO-XAPMM6',
+      status: 'APROVADO',
       color: 'Glacier Blue',
       wheels: 'aero Wheels',
       customer: {
@@ -47,7 +48,7 @@ test.describe('Consulta de pedido', () => {
       - paragraph: Pedido
       - paragraph: ${order.number} 
       - img
-      - text: APROVADO
+      - text: ${order.status}
       - img "Velô Sprint"
       - paragraph: Modelo
       - paragraph: Velô Sprint
@@ -79,6 +80,7 @@ test.describe('Consulta de pedido', () => {
 
     const order ={
       number: 'VLO-XAPMM6',
+      status: 'REPROVADO',
       color: 'Midnight Black',
       wheels: 'sport Wheels',
       customer: {
@@ -97,7 +99,7 @@ test.describe('Consulta de pedido', () => {
       - paragraph: Pedido
       - paragraph: ${order.number} 
       - img
-      - text: APROVADO
+      - text: ${order.status}
       - img "Velô Sprint"
       - paragraph: Modelo
       - paragraph: Velô Sprint
