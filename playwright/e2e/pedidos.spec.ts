@@ -79,7 +79,7 @@ test.describe('Consulta de pedido', () => {
     // const order = 'VLO-ILZ6O2'
 
     const order ={
-      number: 'VLO-XAPMM6',
+      number: 'VLO-ILZ6O2',
       status: 'REPROVADO',
       color: 'Midnight Black',
       wheels: 'sport Wheels',
