@@ -17,8 +17,6 @@ test.describe('Consulta de pedido', () => {
   test('deve consultar um pedido aprovado', async ({ page }) => {
 
     //Test Data
-    // const order = 'VLO-XAPMM6'
-
     const order ={
       number: 'VLO-XAPMM6',
       status: 'APROVADO',
@@ -36,13 +34,6 @@ test.describe('Consulta de pedido', () => {
     await page.getByRole('button', { name: 'Buscar Pedido' }).click()
 
     //Assert
-    // const containerPedido = page.getByRole('paragraph')
-    //   .filter({ hasText: /^Pedido$/ })
-    //   .locator('..') // sobe para o elemento pai
-
-    // await expect(containerPedido).toContainText(order, { timeout: 10000 })
-    // await expect(page.getByText('APROVADO')).toBeVisible()
-
       await expect(page.getByTestId(`order-result-${order.number}`)).toMatchAriaSnapshot(`
       - img
       - paragraph: Pedido
@@ -76,8 +67,6 @@ test.describe('Consulta de pedido', () => {
   test('deve consultar um pedido reprovado', async ({ page }) => {
 
     //Test Data
-    // const order = 'VLO-ILZ6O2'
-
     const order ={
       number: 'VLO-ILZ6O2',
       status: 'REPROVADO',
@@ -94,6 +83,7 @@ test.describe('Consulta de pedido', () => {
     await page.getByRole('textbox', { name: 'Número do Pedido' }).fill(order.number)
     await page.getByRole('button', { name: 'Buscar Pedido' }).click()
 
+    //Assert
     await expect(page.getByTestId(`order-result-${order.number}`)).toMatchAriaSnapshot(`
       - img
       - paragraph: Pedido
