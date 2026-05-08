@@ -23,7 +23,7 @@ test.describe('Consulta de pedido', () => {
     //Test Data
     const order ={
       number: 'VLO-XAPMM6',
-      status: 'APROVADO',
+      status: 'APROVADO' as const,
       color: 'Glacier Blue',
       wheels: 'aero Wheels',
       customer: {
@@ -68,12 +68,7 @@ test.describe('Consulta de pedido', () => {
       - paragraph: /R\\$ \\d+\\.\\d+,\\d+/
       `);
 
-      const statusBadge = page.getByRole('status').filter({hasText: order.status})
-      await expect(statusBadge).toHaveClass(/bg-green-100/)
-      await expect(statusBadge).toHaveClass(/text-green-700/)
-
-      const statusIcon = statusBadge.locator('svg')
-      await expect(statusIcon).toHaveClass(/lucide-circle-check-big/)
+      await orderLockupPage.validadeStatusBadge(order.status)
   })
 
   test('deve consultar um pedido reprovado', async ({ page }) => {
@@ -81,7 +76,7 @@ test.describe('Consulta de pedido', () => {
     //Test Data
     const order ={
       number: 'VLO-ILZ6O2',
-      status: 'REPROVADO',
+      status: 'REPROVADO' as const,
       color: 'Midnight Black',
       wheels: 'sport Wheels',
       customer: {
@@ -126,12 +121,7 @@ test.describe('Consulta de pedido', () => {
       - paragraph: /R\\$ \\d+\\.\\d+,\\d+/
       `);
 
-      const statusBadge = page.getByRole('status').filter({hasText: order.status})
-      await expect(statusBadge).toHaveClass(/bg-red-100 text-red-700/)
-      // await expect(statusBadge).toHaveClass(/text-red-700/)
-
-      const statusIcon = statusBadge.locator('svg')
-      await expect(statusIcon).toHaveClass(/lucide-circle-x/)
+      await orderLockupPage.validadeStatusBadge(order.status)
   })
 
   test('deve consultar um pedido em análise', async ({ page }) => {
@@ -139,7 +129,7 @@ test.describe('Consulta de pedido', () => {
     //Test Data
     const order ={
       number: 'VLO-78WY8J',
-      status: 'EM_ANALISE',
+      status: 'EM_ANALISE' as const,
       color: 'Lunar White',
       wheels: 'aero Wheels',
       customer: {
@@ -184,12 +174,7 @@ test.describe('Consulta de pedido', () => {
       - paragraph: /R\\$ \\d+\\.\\d+,\\d+/
       `);
 
-      const statusBadge = page.getByRole('status').filter({hasText: order.status})
-      await expect(statusBadge).toHaveClass(/bg-amber-100/)
-      await expect(statusBadge).toHaveClass(/text-amber-700/)
-
-      const statusIcon = statusBadge.locator('svg')
-      await expect(statusIcon).toHaveClass(/lucide-clock/)
+      await orderLockupPage.validadeStatusBadge(order.status)
   })
 
   test('Deve exibir mensagem quando o pedido não é encontrado', async ({ page }) => {
